@@ -25,12 +25,7 @@ requirements:
     - python
     - {{ pin_compatible('numpy') }}
     - libflang  # [win and py3k]
-    #- scipy
-    - xarray
-    - future
-    - attrdict
-    - numba  # [py2k]
-
+    #- scipy  # uncommenting this line causes conda-build to hang forever on Mac OS
 
 test:
   requires:
