@@ -21,6 +21,7 @@ def configuration(parent_package='',top_path=None):
     config = Configuration('minimal_f2py_package',
                            parent_name=parent_package,
                            top_path=top_path)
+    config.add_subpackage('tests')
     config.add_extension(name='add',
                          sources=['add.f', 'add.pyf'],
                          extra_f90_compile_args=f90flags,)
