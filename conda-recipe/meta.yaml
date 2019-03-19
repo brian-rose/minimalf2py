@@ -1,0 +1,39 @@
+{% set name = "minimal_f2py_package" %}
+{% set version = "0.1" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  path: ../
+
+build:
+  skip: True  # [win32 or (win and py27)]
+  number: 0
+
+requirements:
+  build:
+    - {{ compiler('fortran') }}
+    - {{ compiler('c') }}
+  host:
+    - flang  # [win and py3k]
+    - python
+    - setuptools
+    - numpy
+  run:
+    - python
+    - {{ pin_compatible('numpy') }}
+    - libflang  # [win and py3k]
+
+test:
+  requires:
+    - pytest
+  imports:
+    - minimal_f2py_package
+  commands:
+    - pytest -v --pyargs minimal_f2py_package.tests
+
+extra:
+  recipe-maintainers:
+    - brian-rose
