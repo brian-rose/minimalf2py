@@ -25,6 +25,12 @@ requirements:
     - python
     - {{ pin_compatible('numpy') }}
     - libflang  # [win and py3k]
+    #- scipy
+    - xarray
+    - future
+    - attrdict
+    - numba  # [py2k]
+
 
 test:
   requires:
