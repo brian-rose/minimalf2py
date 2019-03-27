@@ -35,5 +35,4 @@ install:
 build: false
 
 test_script:
-  - "cd $home"
-  - "pytest minimal_f2py_package --verbose"
+  - "pytest --pyargs minimal_f2py_package.tests --verbose"
