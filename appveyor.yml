@@ -30,10 +30,11 @@ install:
   - "conda env create --file ./ci/requirements-%CONDA_ENV%.yml"
   - "activate test_env"
   - "conda list"
-  - "python -m pip install . --no-deps -vv"
+  - "conda-build conda-recipe"
+  #- "python -m pip install . --no-deps -vv"
 
 build: false
 
-test_script:
-  - "activate test_env"
-  - "pytest minimal_f2py_package --verbose"
+#test_script:
+#  - "activate test_env"
+#  - "pytest minimal_f2py_package --verbose"
