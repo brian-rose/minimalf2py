@@ -35,4 +35,5 @@ install:
 build: false
 
 test_script:
+  - "activate test_env"
   - "pytest minimal_f2py_package --verbose"
