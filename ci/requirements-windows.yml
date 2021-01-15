@@ -2,7 +2,7 @@ name: test_env
 channels:
   - conda-forge
 dependencies:
-  - pip=20.2
+  - pip
   - setuptools
   - pytest
   - numpy
