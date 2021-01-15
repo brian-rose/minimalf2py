@@ -30,7 +30,7 @@ jobs:
           use-only-tar-bz2: true
       - name: Build and install
         run: |
-          python -m pip install --no-deps -e .
+          python -m pip install . --no-deps -vv
       - name: Check out conda env details
         shell: powershell
         run: |
