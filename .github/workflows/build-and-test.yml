@@ -30,7 +30,7 @@ jobs:
           python-version: ${{ matrix.python-version }}
           environment-file: ${{ matrix.environment-file }}
           miniforge-version: latest
-          auto-update-conda: true
+          auto-update-conda: false
           use-only-tar-bz2: true
       - name: Build and install
         run: |
