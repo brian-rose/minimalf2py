@@ -1,4 +1,4 @@
-name: Build and test minimial_f2py_package on github actions
+name: Build and test minimial_f2py_package for windows on github actions
 
 on: push
 
@@ -8,17 +8,15 @@ jobs:
     runs-on: ${{ matrix.os }}
     defaults:
       run:
-        shell: bash -l {0}
+        shell: pwsh
     strategy:
       fail-fast: false
       matrix:
         python-version: ["3.7", "3.8"]
-        os: ["ubuntu-latest", "macos-latest", ]
+        os: ["windows-latest"]
         include:
-          - os: ubuntu-latest
-            environment-file: ci/requirements-linux.yml
-          - os: macos-latest
-            environment-file: ci/requirements-macos.yml
+          - os: windows-latest
+            environment-file: ci/requirements-windows.yml
 
     steps:
       - uses: actions/checkout@v2
