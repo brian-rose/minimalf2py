@@ -34,7 +34,8 @@ jobs:
           pip check
       - name: Build and install
         run: |
-          python -m pip install . --no-index --find-links . --no-deps -vv
+          #python -m pip install . --no-index --find-links . --no-deps -vv
+          python setup.py install --verbose
           conda info
           conda list
       - name: Check out conda env details
