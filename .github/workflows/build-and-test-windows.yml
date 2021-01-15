@@ -31,7 +31,7 @@ jobs:
           use-only-tar-bz2: true
       - name: Build and install
         run: |
-          python -m pip install . --no-deps -vv
+          python -m pip install --no-index --find-links=. --no-deps -vv
           conda info
           conda list
       - name: Check out conda env details
