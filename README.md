@@ -1,4 +1,4 @@
-# minimal_f2py_package
+# minimalf2py
 A minimal package to diagnose issues with building Python / Fortran packages with f2py
 
 Brian E. J. Rose

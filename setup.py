@@ -1,7 +1,7 @@
 import os, sys
 import textwrap
 
-VERSION = '0.1'
+VERSION = '0.1.1'
 
 # BEFORE importing setuptools, remove MANIFEST. Otherwise it may not be
 # properly updated when the contents of directories change (true for distutils,
@@ -17,13 +17,13 @@ def configuration(parent_package='',top_path=None):
                        assume_default_configuration=True,
                        delegate_options_to_subpackages=True,
                        quiet=True)
-    config.add_subpackage('minimal_f2py_package')
+    config.add_subpackage('minimalf2py')
     return config
 
 def setup_package():
     __version__ = VERSION
     metadata = dict(
-          name='minimal_f2py_package',
+          name='minimalf2py',
           version=__version__,
           author='Brian E. J. Rose',
           author_email='brose@albany.edu',

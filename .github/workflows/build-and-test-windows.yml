@@ -1,4 +1,4 @@
-name: Build and test minimial_f2py_package for windows on github actions
+name: Build and test minimialf2py for windows on github actions
 
 on: push
 
@@ -36,9 +36,9 @@ jobs:
         run: |
           conda info
           conda list
-      - name: Import minimal_f2py_package
+      - name: Import minimalf2py
         run: |
-          python -c "import minimal_f2py_package"
+          python -c "import minimalf2py"
       - name: Run tests
         run: |
-          pytest -v --pyargs minimal_f2py_package.tests
+          pytest -v --pyargs minimalf2py.tests

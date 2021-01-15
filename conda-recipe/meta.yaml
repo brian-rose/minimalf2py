@@ -1,4 +1,4 @@
-{% set name = "minimal_f2py_package" %}
+{% set name = "minimalf2py" %}
 {% set version = "0.1" %}
 
 package:
@@ -31,9 +31,9 @@ test:
   requires:
     - pytest
   imports:
-    - minimal_f2py_package
+    - minimalf2py
   commands:
-    - pytest -v --pyargs minimal_f2py_package.tests
+    - pytest -v --pyargs minimalf2py.tests
 
 extra:
   recipe-maintainers:

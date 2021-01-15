@@ -18,7 +18,7 @@ def configuration(parent_package='',top_path=None):
     f90flags.append('-O3')
     #  Suppress all compiler warnings (avoid huge CI log files)
     f90flags.append('-w')
-    config = Configuration('minimal_f2py_package',
+    config = Configuration('minimalf2py',
                            parent_name=parent_package,
                            top_path=top_path)
     config.add_subpackage('tests')

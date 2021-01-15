@@ -35,4 +35,4 @@ install:
 build: false
 
 test_script:
-  - "pytest --pyargs minimal_f2py_package.tests --verbose"
+  - "pytest --pyargs minimalf2py.tests --verbose"
