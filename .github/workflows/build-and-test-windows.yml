@@ -29,15 +29,9 @@ jobs:
           miniforge-version: latest
           auto-update-conda: false
           use-only-tar-bz2: true
-      - name: pip check
-        run: |
-          pip check
       - name: Build and install
         run: |
-          #python -m pip install . --no-index --find-links . --no-deps -vv
-          python setup.py install --verbose
-          conda info
-          conda list
+          python -m pip install . --no-index --find-links . --no-deps -vv --upgrade
       - name: Check out conda env details
         run: |
           conda info
