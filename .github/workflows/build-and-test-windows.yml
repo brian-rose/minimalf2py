@@ -25,7 +25,6 @@ jobs:
           activate-environment: test_env
           python-version: ${{ matrix.python-version }}
           environment-file: ${{ matrix.environment-file }}
-          miniforge-version: latest
           auto-update-conda: false
       - name: Build and install
         run: |

@@ -17,8 +17,8 @@ jobs:
         include:
           - os: ubuntu-latest
             environment-file: ci/requirements-linux.yml
-          # - os: macos-latest
-          #   environment-file: ci/requirements-macos.yml
+          - os: macos-latest
+            environment-file: ci/requirements-macos.yml
 
     steps:
       - uses: actions/checkout@v2
@@ -27,7 +27,6 @@ jobs:
           activate-environment: test_env
           python-version: ${{ matrix.python-version }}
           environment-file: ${{ matrix.environment-file }}
-          miniforge-version: latest
           auto-update-conda: false
       - name: Build and install
         run: |
