@@ -29,7 +29,7 @@ jobs:
           auto-update-conda: false
       - name: Build and install
         run: |
-          python -m pip install . --no-deps -vv
+          python -m pip install -e . --no-deps -vv
       - name: Check out conda env details
         run: |
           conda info
