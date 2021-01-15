@@ -12,13 +12,13 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python-version: ["3.7", "3.8"]
-        os: ["ubuntu-latest", "macos-latest", ]
+        python-version: ["3.8"]
+        os: ["ubuntu-latest", ]
         include:
           - os: ubuntu-latest
             environment-file: ci/requirements-linux.yml
-          - os: macos-latest
-            environment-file: ci/requirements-macos.yml
+          # - os: macos-latest
+          #   environment-file: ci/requirements-macos.yml
 
     steps:
       - uses: actions/checkout@v2
@@ -31,6 +31,8 @@ jobs:
           auto-update-conda: false
       - name: Build and install
         run: |
+          echo "Where are we?"
+          pwd
           python -m pip install . --no-deps -vv
       - name: Check out conda env details
         run: |
