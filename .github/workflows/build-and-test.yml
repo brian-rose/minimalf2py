@@ -33,7 +33,7 @@ jobs:
         run: |
           echo "Where are we?"
           pwd
-          python -m pip install . --no-deps -vv -e
+          python -m pip install -e . --no-deps -vv
       - name: Check out conda env details
         run: |
           conda info
