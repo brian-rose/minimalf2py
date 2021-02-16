@@ -27,12 +27,12 @@ jobs:
           activate-environment: test_env
           python-version: ${{ matrix.python-version }}
           environment-file: ${{ matrix.environment-file }}
-          auto-update-conda: false
+          miniconda-version: latest
       - name: Build and install
         run: |
           echo "Where are we?"
           pwd
-          python -m pip install -e . --no-deps -vv
+          python -m pip install --verbose --no-deps --editable .
       - name: Check out conda env details
         run: |
           conda info
@@ -42,4 +42,4 @@ jobs:
           python -c "import minimalf2py"
       - name: Run tests
         run: |
-          pytest -v --pyargs minimalf2py.tests
+          pytest --verbose --pyargs minimalf2py.tests
