@@ -4,22 +4,27 @@ on: push
 
 jobs:
 
-  linux-macos:
+  build-test:
     name: ${{ matrix.os }} py${{ matrix.python-version }}
     runs-on: ${{ matrix.os }}
     defaults:
       run:
-        shell: bash -l {0}
+        shell: ${{ matrix.shell }}
     strategy:
       fail-fast: false
       matrix:
         python-version: ["3.8"]
-        os: ["ubuntu-latest", "macos-latest"]
+        os: ["ubuntu-latest", "macos-latest", "windows-latest"]
         include:
           - os: ubuntu-latest
             environment-file: ci/requirements-linux.yml
+            shell: bash -l {0}
           - os: macos-latest
             environment-file: ci/requirements-macos.yml
+            shell: bash -l {0}
+          - os: windows-latest
+            environment-file: ci/requirements-windows.yml
+            shell: powershell
 
     steps:
       - uses: actions/checkout@v2
@@ -38,23 +43,3 @@ jobs:
       - name: Run tests
         run: |
           pytest --verbose --pyargs minimalf2py.tests
-
-  windows:
-    runs-on: windows-latest
-    steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-python@v2
-      with:
-        python-version: '3.x'
-    - run: echo "[build]`ncompiler=mingw32" | Out-File -Encoding ASCII ~/pydistutils.cfg
-      shell: powershell
-
-    - name: Build and install
-      run: |
-        python -m pip install --verbose --no-deps --editable .
-    - name: Import minimalf2py
-      run: |
-        python -c "import minimalf2py"
-    - name: Run tests
-      run: |
-        pytest --verbose --pyargs minimalf2py.tests
