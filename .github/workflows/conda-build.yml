@@ -1,4 +1,4 @@
-name: Build and test minimialf2py on github actions
+name: Use conda-build to build and test
 
 on: push
 
@@ -26,22 +26,11 @@ jobs:
       - uses: actions/checkout@v2
       - uses: conda-incubator/setup-miniconda@v2
         with:
-          activate-environment: test_env
           python-version: ${{ matrix.python-version }}
-          environment-file: ${{ matrix.environment-file }}
           miniconda-version: latest
-      - name: Build and install
+      - name: Install conda-build
         run: |
-          echo "Where are we?"
-          pwd
-          python -m pip install --verbose --no-deps --editable .
-      - name: Check out conda env details
+          conda install conda-build
+      - name: Run conda-build
         run: |
-          conda info
-          conda list
-      - name: Import minimalf2py
-        run: |
-          python -c "import minimalf2py"
-      - name: Run tests
-        run: |
-          pytest --verbose --pyargs minimalf2py.tests
+          conda-build conda-recipe
