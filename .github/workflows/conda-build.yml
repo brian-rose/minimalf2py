@@ -28,6 +28,7 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
           miniconda-version: latest
+          channels: conda-forge
       - name: Install conda-build
         run: |
           conda install conda-build
