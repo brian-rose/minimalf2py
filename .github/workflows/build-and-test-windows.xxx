@@ -16,7 +16,7 @@ jobs:
         os: ["windows-latest"]
         include:
           - os: windows-latest
-            environment-file: ci/requirements-windows.yml
+            environment-file: ci/requirements-windows.yaml
 
     steps:
       - uses: actions/checkout@v2
