@@ -34,4 +34,4 @@ jobs:
           conda install conda-build
       - name: Run conda-build
         run: |
-          conda-build conda-recipe
+          conda-build -c conda-forge conda-recipe
