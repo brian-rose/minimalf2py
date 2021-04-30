@@ -1,8 +1,6 @@
 # minimalf2py
 
-[![Build and test](https://github.com/brian-rose/minimalf2py/actions/workflows/build-and-test.yaml/badge.svg)](https://github.com/brian-rose/minimalf2py/actions/workflows/build-and-test.yaml)
-
-[![Conda build](https://github.com/brian-rose/minimalf2py/actions/workflows/conda-build.yaml/badge.svg)](https://github.com/brian-rose/minimalf2py/actions/workflows/conda-build.yaml)
+[![Build and test](https://github.com/brian-rose/minimalf2py/actions/workflows/build-and-test.yaml/badge.svg)](https://github.com/brian-rose/minimalf2py/actions/workflows/build-and-test.yaml) [![Conda build](https://github.com/brian-rose/minimalf2py/actions/workflows/conda-build.yaml/badge.svg)](https://github.com/brian-rose/minimalf2py/actions/workflows/conda-build.yaml)
 
 A minimal package to diagnose issues with building Python / Fortran packages with f2py
 
