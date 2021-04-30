@@ -1,6 +1,6 @@
 # minimalf2py
 
-[![Build and test](https://github.com/brian-rose/minimalf2py/workflows/build-and-test.yaml/badge.svg)](https://github.com/brian-rose/minimalf2py/actions/workflows/build-and-test.yaml)
+[![Build and test](https://github.com/brian-rose/minimalf2py/workflows/build-and-test.yaml/badge.svg)](https://github.com/brian-rose/minimalf2py/actions/)
 
 A minimal package to diagnose issues with building Python / Fortran packages with f2py
 
