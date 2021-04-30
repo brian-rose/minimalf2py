@@ -1,0 +1,45 @@
+name: Use conda-build to build and test
+
+on: push
+
+jobs:
+
+  conda-build-test:
+    name: ${{ matrix.os }} py${{ matrix.python-version }}
+    runs-on: ${{ matrix.os }}-latest
+    defaults:
+      run:
+        shell: ${{ matrix.shell }}
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.8"]
+        os: [Ubuntu, macOS, Windows]
+        include:
+          - os: Ubuntu
+            environment-file: ci/requirements-linux.yaml
+            shell: bash -l {0}
+          - os: macOS
+            environment-file: ci/requirements-macos.yaml
+            shell: bash -l {0}
+          - os: Windows
+            environment-file: ci/requirements-windows.yaml
+            shell: powershell
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: conda-incubator/setup-miniconda@v2
+        with:
+          miniconda-version: "latest"
+          python-version: ${{ matrix.python-version }}
+          channels: conda-forge
+      - name: Setup Fortran compiler for Windows
+        if: ${{ matrix.os == 'Windows' }}
+        run: |
+          echo "[build]`ncompiler=mingw32" | Out-File -Encoding ASCII ~/pydistutils.cfg
+      - name: Install conda-build
+        run: |
+          conda install conda-build
+      - name: Run conda-build
+        run: |
+          conda-build -c conda-forge conda-recipe
