@@ -1,4 +1,4 @@
-name: Use conda-build to build and test
+name: Conda-build
 
 on: push
 
