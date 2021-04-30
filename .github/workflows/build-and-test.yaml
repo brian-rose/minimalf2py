@@ -36,7 +36,7 @@ jobs:
           channel-priority: strict
           environment-file: ${{ matrix.environment-file }}
       - name: Setup Fortran compiler for Windows
-        if: ${{ matrix.os == "Windows" }}
+        if: ${{ matrix.os == Windows }}
         run: |
           echo "[build]`ncompiler=mingw32" | Out-File -Encoding ASCII ~/pydistutils.cfg
       - name: Build and install
