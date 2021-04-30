@@ -1,4 +1,4 @@
-name: Build and test minimialf2py for windows on github actions
+name: Build and test for Windows
 
 on: push
 
@@ -24,7 +24,6 @@ jobs:
       - name: Build and install
         run: |
           echo "[build]`ncompiler=mingw32" | Out-File -Encoding ASCII ~/pydistutils.cfg
-          python setup.py egg_info
           python -m pip install --no-deps --editable .
       - name: Import minimalf2py
         run: |

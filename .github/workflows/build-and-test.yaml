@@ -15,6 +15,7 @@ jobs:
       matrix:
         python-version: ["3.8"]
         # os: [Ubuntu, macOS, Windows]
+        os: [Ubuntu, macOS]
         include:
           - os: Ubuntu
             environment-file: ci/requirements-linux.yaml
@@ -37,7 +38,6 @@ jobs:
           environment-file: ${{ matrix.environment-file }}
       - name: Build and install
         run: |
-          python setup.py egg_info
           python -m pip install --no-deps --editable .
       - name: Import minimalf2py
         run: |
