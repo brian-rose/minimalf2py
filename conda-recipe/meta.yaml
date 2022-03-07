@@ -9,22 +9,23 @@ source:
   path: ../
 
 build:
-  skip: True  # [win32 or (win and py27)]
+  skip: True  # [win and py<30]
   number: 0
 
 requirements:
   build:
     - {{ compiler('fortran') }}
+    - {{ compiler('m2w64_fortran') }}  # [win]
     - {{ compiler('c') }}
   host:
-    - flang  # [win and py3k]
+    - libpython  # [win]
     - python
     - setuptools
+    - pip
     - numpy
   run:
     - python
     - {{ pin_compatible('numpy') }}
-    - libflang  # [win and py3k]
     #- scipy  # uncommenting this line causes conda-build to hang forever on Mac OS
 
 test:
