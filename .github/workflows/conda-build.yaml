@@ -33,14 +33,14 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - name: Setup Mambaforge
-        uses: conda-incubator/setup-miniconda@v2
+      - uses: conda-incubator/setup-miniconda@v2
         with:
-          miniforge-variant: Mambaforge
-          miniforge-version: latest
-          use-mamba: true
+          miniconda-version: "latest"
+          python-version: ${{ matrix.python-version }}
+          channels: conda-forge
       - name: Install conda-build
-        run: mamba install conda-build
+        run: |
+          conda install conda-build
       - name: Run conda-build
         run: |
           conda-build -c conda-forge conda-recipe
