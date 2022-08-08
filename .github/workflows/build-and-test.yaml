@@ -45,6 +45,7 @@ jobs:
       - name: Setup Fortran compiler for Windows
         if: ${{ matrix.os == 'Windows' }}
         run: |
+          Remove-item C:\ProgramData\Chocolatey\bin\gfortran.exe
           echo "[build]`ncompiler=flang" | Out-File -Encoding ASCII ~/pydistutils.cfg
       - name: Build and install
         run: |
