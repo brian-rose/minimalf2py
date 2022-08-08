@@ -33,13 +33,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - uses: conda-incubator/setup-miniconda@v2
+      - name: Setup Mambaforge
+        uses: conda-incubator/setup-miniconda@v2
         with:
-          miniconda-version: "latest"
-          python-version: ${{ matrix.python-version }}
+          miniforge-variant: Mambaforge
+          miniforge-version: latest
           activate-environment: test_env
-          channel-priority: strict
-          environment-file: ${{ matrix.environment-file }}
+          use-mamba: true
+      - name: Update environment
+        run: mamba env update -n test_env -f ${{ matrix.environment-file }}
       - name: Setup Fortran compiler for Windows
         if: ${{ matrix.os == 'Windows' }}
         run: |

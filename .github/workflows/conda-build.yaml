@@ -1,6 +1,11 @@
 name: Conda-build
 
-on: push
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
 
 jobs:
 
@@ -28,18 +33,14 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - uses: conda-incubator/setup-miniconda@v2
+      - name: Setup Mambaforge
+        uses: conda-incubator/setup-miniconda@v2
         with:
-          miniconda-version: "latest"
-          python-version: ${{ matrix.python-version }}
-          channels: conda-forge
-      - name: Setup Fortran compiler for Windows
-        if: ${{ matrix.os == 'Windows' }}
-        run: |
-          echo "[build]`ncompiler=mingw32" | Out-File -Encoding ASCII ~/pydistutils.cfg
+          miniforge-variant: Mambaforge
+          miniforge-version: latest
+          use-mamba: true
       - name: Install conda-build
-        run: |
-          conda install conda-build
+        run: mamba install conda-build
       - name: Run conda-build
         run: |
           conda-build -c conda-forge conda-recipe
