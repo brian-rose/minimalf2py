@@ -15,7 +15,7 @@ build:
 
 requirements:
   build:
-    - {{ compiler('fortran') }}  # [not win]
+    - {{ compiler('fortran') }}  
     - {{ compiler('m2w64_fortran') }}  # [win]
     - {{ compiler('c') }}
   host:

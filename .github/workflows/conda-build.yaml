@@ -22,13 +22,10 @@ jobs:
         os: [Ubuntu, macOS, Windows]
         include:
           - os: Ubuntu
-            environment-file: ci/requirements-linux.yaml
             shell: bash -l {0}
           - os: macOS
-            environment-file: ci/requirements-macos.yaml
             shell: bash -l {0}
           - os: Windows
-            environment-file: ci/requirements-windows.yaml
             shell: powershell
 
     steps:
