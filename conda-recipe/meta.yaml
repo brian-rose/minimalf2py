@@ -16,6 +16,7 @@ requirements:
   build:
     - {{ compiler('fortran') }}
     - {{ compiler('c') }}
+    - toolchain  # [win]
   host:
     - libpython  # [win]
     - python
