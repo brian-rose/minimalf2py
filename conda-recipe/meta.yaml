@@ -9,13 +9,12 @@ source:
   path: ../
 
 build:
-  skip: True  # [win and py<30]
-  number: 0
+  script: {{ PYTHON }} -m pip install . --no-deps -vv
+  number: 1
 
 requirements:
   build:
     - {{ compiler('fortran') }}
-    - {{ compiler('m2w64_fortran') }}  # [win]
     - {{ compiler('c') }}
   host:
     - libpython  # [win]

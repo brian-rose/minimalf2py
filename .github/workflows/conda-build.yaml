@@ -1,6 +1,11 @@
 name: Conda-build
 
-on: push
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
 
 jobs:
 
@@ -17,13 +22,10 @@ jobs:
         os: [Ubuntu, macOS, Windows]
         include:
           - os: Ubuntu
-            environment-file: ci/requirements-linux.yaml
             shell: bash -l {0}
           - os: macOS
-            environment-file: ci/requirements-macos.yaml
             shell: bash -l {0}
           - os: Windows
-            environment-file: ci/requirements-windows.yaml
             shell: powershell
 
     steps:
@@ -33,10 +35,6 @@ jobs:
           miniconda-version: "latest"
           python-version: ${{ matrix.python-version }}
           channels: conda-forge
-      - name: Setup Fortran compiler for Windows
-        if: ${{ matrix.os == 'Windows' }}
-        run: |
-          echo "[build]`ncompiler=mingw32" | Out-File -Encoding ASCII ~/pydistutils.cfg
       - name: Install conda-build
         run: |
           conda install conda-build

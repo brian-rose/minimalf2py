@@ -6,4 +6,5 @@ dependencies:
   - setuptools
   - pytest
   - numpy
-  - flang
+  - c-compiler
+  - fortran-compiler
