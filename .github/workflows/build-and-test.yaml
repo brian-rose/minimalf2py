@@ -46,9 +46,6 @@ jobs:
       - name: Build and install
         run: |
           python -m pip install --no-deps .
-      - name: Import minimalf2py
-        run: |
-          python -c "import minimalf2py"
       - name: Run tests
         run: |
           pytest --verbose --pyargs minimalf2py
