@@ -49,4 +49,4 @@ jobs:
       - name: Run tests
         working-directory: ~
         run: |
-          pytest --verbose --pyargs minimalf2py.tests
+          pytest --verbose --pyargs minimalf2py
