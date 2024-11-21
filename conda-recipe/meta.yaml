@@ -1,5 +1,5 @@
 {% set name = "minimalf2py" %}
-{% set version = "0.1" %}
+{% set version = "0.2" %}
 
 package:
   name: {{ name|lower }}
@@ -9,24 +9,35 @@ source:
   path: ../
 
 build:
-  skip: True  # [win and py<30]
-  number: 0
+  script: {{ PYTHON }} -m pip install . --no-deps -vv
+  number: 1
 
 requirements:
   build:
-    - {{ compiler('fortran') }}
-    - {{ compiler('m2w64_fortran') }}  # [win]
+    - ninja                                  
+    - pkg-config                             # [unix]
+    - clang                                  # [win]
+    # use flang as fortran compiler on windows (uses clang driver)
+    - flang <18                              # [win]
+    # use llvm linker for both of the above
+    - lld                                    # [win]
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
+    - {{ compiler('fortran') }}              # [unix]
   host:
-    - libpython  # [win]
+    - compiler-rt                            # [win]
+    - meson-python
+    # limit this for now because incompatible changes
+    # have accumulated in meson_dev channel for 1.4+
+    - meson <1.4                             # [win]
     - python
-    - setuptools
-    - pip
+    - python-build
     - numpy
+    - pip
+    - packaging >=20.0
   run:
     - python
-    - {{ pin_compatible('numpy') }}
-    #- scipy  # uncommenting this line causes conda-build to hang forever on Mac OS
+    - numpy
 
 test:
   requires:
@@ -34,7 +45,7 @@ test:
   imports:
     - minimalf2py
   commands:
-    - pytest -v --pyargs minimalf2py.tests
+    - pytest -v --pyargs minimalf2py
 
 extra:
   recipe-maintainers:
