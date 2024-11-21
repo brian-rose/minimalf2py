@@ -1,0 +1,22 @@
+[build-system]
+build-backend = 'mesonpy'
+requires = [
+    "meson-python",
+    "numpy",
+]
+
+[project]
+name = "minimalf2py"
+version = "0.2"
+description = "A minimal package to diagnose issues with building Python / Fortran packages with f2py"
+license = { file = "LICENSE" }
+maintainers = [
+    { name = "Brian E. J. Rose", email = "brose@albany.edu" },
+]
+readme = "README.md"
+classifiers = [
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python",
+    "Programming Language :: Fortran",
+]
