@@ -45,7 +45,7 @@ jobs:
           echo "[build]`ncompiler=mingw32" | Out-File -Encoding ASCII ~/pydistutils.cfg
       - name: Build and install
         run: |
-          python -m pip install --no-deps --editable .
+          python -m pip install --no-deps .
       - name: Run tests
         working-directory: ~
         run: |
